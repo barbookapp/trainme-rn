@@ -9,6 +9,7 @@ import TrainerDetailScreen from '../screens/train/TrainerDetailScreen';
 import SpecialtiesScreen from '../screens/train/SpecialtiesScreen';
 import SpecialtyTrainersScreen from '../screens/train/SpecialtyTrainersScreen';
 import HomeScreen from '../screens/home/HomeScreen';
+import TrainerScreen from '../screens/train/trainer/TrainerScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -69,6 +70,7 @@ const RootNavigator = () => {
           name="Specialty Trainers"
           component={SpecialtyTrainersScreen}
         />
+        <Stack.Screen name="Trainer" component={TrainerScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

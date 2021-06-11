@@ -20,7 +20,12 @@ const TrainersListScreen = props => {
               trainerName: itemData.item.firstName,
             });
           }}
-          onSchedule={() => {}}
+          onSchedule={() => {
+            props.navigation.navigate('Trainer', {
+              trainerId: itemData.item.id,
+              trainerName: itemData.item.firstName,
+            });
+          }}
         />
       )}
     />
