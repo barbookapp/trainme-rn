@@ -10,6 +10,7 @@ import SpecialtiesScreen from '../screens/train/SpecialtiesScreen';
 import SpecialtyTrainersScreen from '../screens/train/SpecialtyTrainersScreen';
 import HomeScreen from '../screens/home/HomeScreen';
 import TrainerScreen from '../screens/train/trainer/TrainerScreen';
+import SearchScreen from '../screens/train/search/SearchScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -52,6 +53,15 @@ const TabScreens = () => {
           ),
         }}
       />
+      <Tab.Screen
+        name="Search"
+        component={SearchScreen}
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <MaterialIcons name="search" color={color} size={size} />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 };
@@ -70,7 +80,13 @@ const RootNavigator = () => {
           name="Specialty Trainers"
           component={SpecialtyTrainersScreen}
         />
-        <Stack.Screen name="Trainer" component={TrainerScreen} />
+        <Stack.Screen
+          name="Trainer"
+          component={TrainerScreen}
+          options={({route}) => ({
+            title: route.params.trainerName,
+          })}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,19 +1,26 @@
 import React from 'react';
 import {View, Text, Image} from 'react-native';
 import styles from './styles';
+import {useSelector} from 'react-redux';
 
 const TrainerScreen = props => {
+  const {trainerId} = props.route.params;
+  const selectedTrainer = useSelector(state =>
+    state.trainers.availableTrainers.find(train => train.id === trainerId),
+  );
   return (
     <View style={styles.container}>
       <Image
         style={styles.image}
         source={{
-          uri: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.t9okf4PSzozmd5-nC3NmPwHaDs%26pid%3DApi&f=1',
+          uri: selectedTrainer.imageUrl,
         }}
       />
       <Text style={styles.sectionTitle}>Specialties </Text>
-      <Text style={styles.specialties}>Specialty </Text>
-      <Text style={styles.bio} numberOfLines={3}>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, </Text>
+      <Text style={styles.specialties}>{selectedTrainer.specialtyIds} </Text>
+      <Text style={styles.bio} numberOfLines={3}>
+        {selectedTrainer.bio}
+      </Text>
       <Text style={styles.sectionTitle}>Availability</Text>
     </View>
   );
