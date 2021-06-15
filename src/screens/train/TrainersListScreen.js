@@ -1,10 +1,13 @@
 import React from 'react';
 import {FlatList} from 'react-native';
 import {useSelector} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
 
 import TrainerItem from '../../components/train/TrainerItem';
 
 const TrainersListScreen = props => {
+  const navigation = useNavigation();
+
   const trainers = useSelector(state => state.trainers.availableTrainers);
   return (
     <FlatList

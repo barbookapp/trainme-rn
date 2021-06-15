@@ -16,7 +16,7 @@ const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 const tabBarOptions = {
-  showLabel: false,
+  // showLabel: false,
   activeTintColor: '#9381ff',
   style: {
     height: '10%',
@@ -33,6 +33,7 @@ const TabScreens = () => {
           tabBarIcon: ({color, size}) => (
             <MaterialIcons name="house" color={color} size={size} />
           ),
+          headerShown: false,
         }}
       />
       <Tab.Screen
@@ -53,7 +54,7 @@ const TabScreens = () => {
           ),
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Search"
         component={SearchScreen}
         options={{
@@ -61,7 +62,7 @@ const TabScreens = () => {
             <MaterialIcons name="search" color={color} size={size} />
           ),
         }}
-      />
+      /> */}
     </Tab.Navigator>
   );
 };
@@ -86,6 +87,15 @@ const RootNavigator = () => {
           options={({route}) => ({
             title: route.params.trainerName,
           })}
+        />
+        <Stack.Screen
+          name="Search"
+          component={SearchScreen}
+          options={{
+            tabBarIcon: ({color, size}) => (
+              <MaterialIcons name="search" color={color} size={size} />
+            ),
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
