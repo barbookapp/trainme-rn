@@ -11,6 +11,7 @@ import SpecialtyTrainersScreen from '../screens/train/SpecialtyTrainersScreen';
 import HomeScreen from '../screens/home/HomeScreen';
 import TrainerScreen from '../screens/train/trainer/TrainerScreen';
 import SearchScreen from '../screens/train/search/SearchScreen';
+import AgendaScreen from '../screens/train/trainer/AgendaScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -97,6 +98,7 @@ const RootNavigator = () => {
             ),
           }}
         />
+        <Stack.Screen name="Agenda" component={AgendaScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
